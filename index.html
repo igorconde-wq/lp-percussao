@@ -29,7 +29,7 @@
   <header id="site-header" class="site-header">
     <div class="container header-inner">
       <a href="#topo" class="brand-lockup" aria-label="Caramuela — Oficina de Percussão">
-        <img src="assets/images/logo_verde.png" alt="Logotipo Caramuela" class="brand-logo">
+        <img src="assets/images/logo_verde.png" alt="Logotipo Caramuela" class="brand-logo" width="950" height="792">
         <span class="brand-divider" aria-hidden="true"></span>
         <span class="brand-sub">
           Oficina de Percussão
@@ -38,9 +38,9 @@
       </a>
 
       <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#para-quem">Para Quem É</a>
         <a href="#sobre">A Oficina</a>
         <a href="#instrumentos">Instrumentos</a>
-        <a href="#metodologia">Metodologia</a>
         <a href="#horarios-valores">Horários &amp; Valores</a>
         <a href="#faq">Dúvidas</a>
       </nav>
@@ -49,7 +49,7 @@
         <a href="https://caramuela-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="site-raiz-link">Site Oficial ↗</a>
         <a id="btn-header-inscricao" href="#inscricao" class="btn btn--primary btn--sm">Quero Participar</a>
         <button id="btn-mobile-menu" class="mobile-menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-drawer">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -62,20 +62,20 @@
   <!-- Mobile Drawer -->
   <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
     <div class="mobile-drawer-top">
-      <img src="assets/images/logo_verde.png" alt="Caramuela" style="height: 40px;">
+      <img src="assets/images/logo_verde.png" alt="Caramuela" width="950" height="792" style="height: 40px; width: auto;">
       <button id="btn-mobile-close" class="mobile-drawer-close" type="button" aria-label="Fechar menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
     </div>
     <nav class="mobile-drawer-links" aria-label="Menu móvel">
+      <a href="#para-quem" class="mobile-nav-link">Para Quem É</a>
       <a href="#sobre" class="mobile-nav-link">A Oficina</a>
       <a href="#instrumentos" class="mobile-nav-link">Instrumentos</a>
-      <a href="#metodologia" class="mobile-nav-link">Metodologia</a>
       <a href="#horarios-valores" class="mobile-nav-link">Horários &amp; Valores</a>
-      <a href="#inscricao" class="mobile-nav-link">Inscrição</a>
+      <a href="#inscricao" class="mobile-nav-link">Inscrição &amp; Links</a>
       <a href="#faq" class="mobile-nav-link">Dúvidas</a>
       <a href="https://caramuela-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link">Site Oficial Caramuela ↗</a>
     </nav>
@@ -89,27 +89,28 @@
     <!-- 1. HERO -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-media">
-        <img src="assets/images/hero_percussao.jpg" alt="Ensaio da Oficina de Percussão do Bloco do Caramuela na Lapa com alunos tocando zabumba, triângulo, pandeiro e caixa">
+        <img src="assets/images/hero_percussao.jpg" alt="Turma da Oficina de Percussão do Bloco do Caramuela reunida com zabumbas, ganzás, triângulos e pandeiros" width="1600" height="900" fetchpriority="high">
         <div class="hero-overlay"></div>
       </div>
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
 
       <div class="container">
         <div class="hero-content">
-          <span class="kicker kicker--amber">Bloco do Caramuela • Lapa, Rio de Janeiro</span>
+          <span class="kicker kicker--amber">Bloco do Caramuela • Fundição Progresso, Lapa - RJ</span>
           <h1 id="hero-heading" class="hero-title">Aprenda percussão de forró do zero e faça da segunda-feira a melhor noite da semana.</h1>
           <p class="hero-lead">
-            Na Oficina de Percussão do Bloco do Caramuela você não precisa saber tocar nem ter instrumento: a gente empresta nas aulas para você experimentar zabumba, triângulo, caixa, ganzá ou pandeiro na Fundição Progresso.
+            Você não precisa saber tocar e nem ter instrumento: a gente empresta nas aulas para você experimentar zabumba, triângulo, caixa, ganzá ou pandeiro e tocar em conjunto desde o primeiro encontro.
           </p>
           <div class="hero-cta-group">
             <a id="btn-hero-inscricao" href="#inscricao" class="btn btn--primary">
-              Quero Fazer Minha Inscrição
+              Quero Garantir Minha Vaga
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
             <a id="btn-hero-grupo" href="https://chat.whatsapp.com/BoaX3AkWFFlBwMNRSxHf6n" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">
               Grupo da Aula Aberta
             </a>
             <a id="btn-hero-whatsapp" href="https://wa.me/5521975938088?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Oficina%20de%20Percuss%C3%A3o%20do%20Bloco%20do%20Caramuela." target="_blank" rel="noopener noreferrer" class="btn btn--ghost-light">
-              Tirar Dúvidas no WhatsApp
+              Falar no WhatsApp
             </a>
           </div>
         </div>
@@ -135,62 +136,141 @@
       </div>
     </section>
 
-    <!-- 2. SOBRE A OFICINA -->
-    <section id="sobre" class="story-section section-pad" aria-labelledby="sobre-heading">
-      <div class="container story-grid">
-        <div class="story-copy" data-reveal>
-          <span class="kicker kicker--orange">Forró Pé-de-Serra + Carnaval Carioca</span>
-          <h2 id="sobre-heading" class="section-title">Um bloco onde o trio nordestino ganha corpo de bateria de carnaval.</h2>
-          <p>
-            Nascido da banda Caramuela — formada em 2010 com raízes na agroecologia e na cultura popular brasileira — o Bloco do Caramuela leva desde 2018 a força do forró tradicional para as ruas, cortejos e grandes palcos do Rio de Janeiro.
-          </p>
-          <p>
-            Toda segunda-feira à noite, a <strong>Bateria Infinita</strong> se reúne na Lapa para aprender e tocar um repertório vivo com mais de 30 clássicos de <strong>Luiz Gonzaga, Marinês, Alceu Valença, Falamansa, Rastapé e Dona Zefa</strong>, além de composições autorais.
-          </p>
+    <!-- FAIXA CONTÍNUA DE PALCOS E TRAJETÓRIA -->
+    <div class="venues-marquee" aria-label="Palcos onde o Bloco do Caramuela já se apresentou">
+      <div class="marquee-track">
+        <span class="marquee-item">Circo Voador</span>
+        <span class="marquee-item">Fundição Progresso</span>
+        <span class="marquee-item">Fenfit Itaúnas</span>
+        <span class="marquee-item">Feira de São Cristóvão</span>
+        <span class="marquee-item">SESC Quitandinha</span>
+        <span class="marquee-item">Museu da República</span>
+        <span class="marquee-item">Clube dos Democráticos</span>
+        <span class="marquee-item">Carnaval do Rio</span>
+        <span class="marquee-item" aria-hidden="true">Circo Voador</span>
+        <span class="marquee-item" aria-hidden="true">Fundição Progresso</span>
+        <span class="marquee-item" aria-hidden="true">Fenfit Itaúnas</span>
+        <span class="marquee-item" aria-hidden="true">Feira de São Cristóvão</span>
+        <span class="marquee-item" aria-hidden="true">SESC Quitandinha</span>
+        <span class="marquee-item" aria-hidden="true">Museu da República</span>
+        <span class="marquee-item" aria-hidden="true">Clube dos Democráticos</span>
+        <span class="marquee-item" aria-hidden="true">Carnaval do Rio</span>
+      </div>
+    </div>
 
-          <ul class="ritmos-list" aria-label="Ritmos estudados na oficina">
-            <li>Forró Pé-de-Serra</li>
-            <li>Baião</li>
-            <li>Xote</li>
-            <li>Arrasta-pé</li>
-            <li>Maracatu</li>
-            <li>Xaxado</li>
-            <li>Ciranda &amp; Coco</li>
-          </ul>
-
-          <blockquote class="story-quote">
-            <p>“Todos os arranjos das músicas do bloco nascem da sonoridade clássica do trio de forró — sanfona, zabumba e triângulo — expandida para uma bateria vibrante e acolhedora.”</p>
-            <cite>Madrinhas do Bloco: Anastácia (Rainha do Forró) e Janayna Pereira</cite>
-          </blockquote>
+    <!-- 2. QUEBRA DE OBJEÇÕES (COPY DE CONVERSÃO) -->
+    <section id="para-quem" class="objections-section section-pad" aria-labelledby="objections-heading">
+      <div class="container">
+        <div class="objections-header" data-reveal>
+          <span class="kicker kicker--orange">Sem Barreiras Para Começar</span>
+          <h2 id="objections-heading" class="section-title">De quem nunca tocou nada até sentir a pressão da bateria ao vivo.</h2>
+          <p class="section-lead">
+            A maior parte dos nossos percussionistas chegou sem nunca ter segurado uma baqueta ou um triângulo. Estruturamos a oficina para derrubar cada trava logo na primeira segunda-feira.
+          </p>
         </div>
 
-        <div class="story-visual" data-reveal>
-          <div class="story-photo-frame">
-            <img src="assets/images/bateria_bloco.jpg" alt="Integrantes do Bloco do Caramuela reunidos na Baía de Guanabara com estandarte, zabumbas, triângulos, pandeiros e ganzás" decoding="async">
-            <div class="story-caption-bar">
-              <span><strong>Participação opcional nos shows:</strong> toque nos palcos e cortejos quando se sentir pronto(a).</span>
-            </div>
-          </div>
+        <div class="objections-grid">
+          <article class="objection-card" data-spotlight data-reveal>
+            <span class="objection-myth">“Nunca toquei na vida”</span>
+            <h3>Turma exclusiva para iniciantes do zero</h3>
+            <p>
+              Às <strong>19h</strong>, você começa aprendendo o pulso no corpo, a segurar o instrumento com conforto e as levadas essenciais em um ambiente sem julgamentos e sem pressa.
+            </p>
+          </article>
+
+          <article class="objection-card" data-spotlight data-reveal>
+            <span class="objection-myth">“Não tenho instrumento”</span>
+            <h3>Empréstimo gratuito nas aulas</h3>
+            <p>
+              Durante as aulas, o Bloco fornece zabumba, triângulo, caixa, ganzá e pandeiro para novos alunos testarem antes de decidir qual naipe querem adotar no módulo.
+            </p>
+          </article>
+
+          <article class="objection-card" data-spotlight data-reveal>
+            <span class="objection-myth">“Tenho vergonha de palco”</span>
+            <h3>Shows e Carnaval são 100% opcionais</h3>
+            <p>
+              Você pode fazer a oficina só pelo prazer semanal de tocar e aliviar o estresse — e, se der vontade de subir ao palco ou sair no cortejo, será muito bem-vindo(a).
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- 3. EXPLORADOR INTERATIVO DE INSTRUMENTOS -->
+    <!-- 3. SOBRE A OFICINA + GALERIA REAL DO DRIVE -->
+    <section id="sobre" class="story-section section-pad" aria-labelledby="sobre-heading">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-copy" data-reveal>
+            <span class="kicker kicker--orange">Forró Pé-de-Serra + Carnaval Carioca</span>
+            <h2 id="sobre-heading" class="section-title">Um bloco onde o trio nordestino ganha corpo de bateria de carnaval.</h2>
+            <p>
+              Nascido da banda Caramuela — formada em 2010 com raízes na agroecologia e na cultura popular brasileira — o Bloco do Caramuela leva desde 2018 a força do forró tradicional para as ruas, cortejos e grandes palcos do Rio de Janeiro.
+            </p>
+            <p>
+              Toda segunda-feira à noite, a <strong>Bateria Infinita</strong> se reúne na Lapa para aprender e tocar um repertório vivo com mais de 30 clássicos de <strong>Luiz Gonzaga, Marinês, Alceu Valença, Falamansa, Rastapé e Dona Zefa</strong>, além de composições autorais.
+            </p>
+
+            <ul class="ritmos-list" aria-label="Ritmos estudados na oficina">
+              <li>Forró Pé-de-Serra</li>
+              <li>Baião</li>
+              <li>Xote</li>
+              <li>Arrasta-pé</li>
+              <li>Maracatu</li>
+              <li>Xaxado</li>
+              <li>Ciranda &amp; Coco</li>
+            </ul>
+
+            <blockquote class="story-quote">
+              <p>“Todos os arranjos das músicas do bloco nascem da sonoridade clássica do trio de forró — sanfona, zabumba e triângulo — expandida para uma bateria vibrante e acolhedora.”</p>
+              <cite>Madrinhas do Bloco: Anastácia (Rainha do Forró) e Janayna Pereira</cite>
+            </blockquote>
+          </div>
+
+          <div class="story-visual" data-reveal>
+            <div class="story-photo-frame">
+              <img src="assets/images/bateria_bloco.jpg" alt="Integrantes do Bloco do Caramuela reunidos na Baía de Guanabara com estandarte, zabumbas, triângulos, pandeiros e ganzás" width="1600" height="1067" decoding="async">
+              <div class="story-caption-bar">
+                <span><strong>Comunidade real no Rio:</strong> ensaios na Lapa, Arraiá do Caramuela e Carnaval na rua.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Galeria Real de Ensaios -->
+        <div class="gallery-strip" aria-label="Registros reais de ensaios e instrumentos do Bloco do Caramuela">
+          <figure class="gallery-tile" data-reveal>
+            <img src="assets/images/ensaio_caixas.jpg" alt="Naipe de caixas tocando em sincronia durante ensaio do Bloco do Caramuela" width="960" height="1200" loading="lazy" decoding="async">
+            <figcaption>Prática de conjunto desde as primeiras aulas na Lapa</figcaption>
+          </figure>
+          <figure class="gallery-tile" data-reveal>
+            <img src="assets/images/caixas_fitas.jpg" alt="Caixas de percussão do Bloco do Caramuela decoradas com fitas verde, laranja e roxo" width="900" height="1200" loading="lazy" decoding="async">
+            <figcaption>Instrumentos com as cores oficiais do bloco: verde, laranja e roxo</figcaption>
+          </figure>
+          <figure class="gallery-tile" data-reveal>
+            <img src="assets/images/hero_percussao.jpg" alt="Turma reunida após aula especial de percussão do Caramuela" width="1600" height="900" loading="lazy" decoding="async">
+            <figcaption>Clima leve e acolhedor toda segunda-feira à noite</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. EXPLORADOR INTERATIVO DE INSTRUMENTOS + SEQUENCIADOR FUNCIONAL -->
     <section id="instrumentos" class="instruments-section section-pad" aria-labelledby="instrumentos-heading">
       <div class="container">
         <div class="section-header-split" data-reveal>
           <div>
             <span class="kicker kicker--forest">Os 5 Naipes da Bateria</span>
-            <h2 id="instrumentos-heading" class="section-title">Escolha um instrumento para explorar na oficina.</h2>
+            <h2 id="instrumentos-heading" class="section-title">Explore os instrumentos e teste a levada ao vivo.</h2>
           </div>
           <p class="section-lead">
-            Você experimenta no começo do módulo, descobre com qual naipe tem mais afinidade e se aprofunda nele com professores dedicados — sempre aprendendo como todos os instrumentos conversam juntos.
+            Escolha um instrumento abaixo para conhecer seu papel no bloco, ver quem ensina o naipe e interagir com o sequenciador de <strong>Baião</strong> e <strong>Xote</strong>.
           </p>
         </div>
 
         <div class="instruments-layout">
           <div class="instruments-photo-card" data-reveal>
-            <img src="assets/images/instrumentos_forro.jpg" alt="Zabumba sendo tocada durante ensaio da Oficina de Percussão do Bloco do Caramuela" decoding="async">
+            <img src="assets/images/instrumentos_forro.jpg" alt="Zabumba sendo tocada durante ensaio da Oficina de Percussão do Bloco do Caramuela" width="1200" height="1600" decoding="async">
             <div class="instruments-photo-note">
               <strong>Ainda não tem instrumento?</strong> Sem problema: o Bloco do Caramuela disponibiliza instrumentos para uso dos iniciantes durante as aulas, e a coordenação orienta quando você quiser adquirir o seu.
             </div>
@@ -237,19 +317,43 @@
               </div>
             </div>
 
-            <div class="instrument-audio-bar">
-              <button id="btn-play-groove" type="button" class="audio-btn" aria-pressed="false">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                <span id="audio-btn-label">Ouvir levada de Baião</span>
-              </button>
-              <span id="audio-hint" class="audio-hint">Simulação interativa do naipe selecionado</span>
+            <!-- Sequenciador Rítmico Interativo -->
+            <div class="groove-sequencer" aria-label="Sequenciador interativo de levadas">
+              <div class="sequencer-top">
+                <span style="font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--clr-amber-300);">
+                  Sequenciador de 8 Tempos · Clique nos blocos para editar
+                </span>
+                <div class="rhythm-switch" role="group" aria-label="Escolher ritmo">
+                  <button id="btn-rhythm-baiao" type="button" class="rhythm-btn is-active" data-rhythm="baiao">Baião</button>
+                  <button id="btn-rhythm-xote" type="button" class="rhythm-btn" data-rhythm="xote">Xote</button>
+                </div>
+              </div>
+
+              <div id="sequencer-steps" class="sequencer-steps" role="group" aria-label="Passos rítmicos do instrumento selecionado">
+                <button type="button" class="seq-step is-on" data-step="0" aria-pressed="true">1</button>
+                <button type="button" class="seq-step" data-step="1" aria-pressed="false">e</button>
+                <button type="button" class="seq-step is-on" data-step="2" aria-pressed="true">2</button>
+                <button type="button" class="seq-step is-on" data-step="3" aria-pressed="true">a</button>
+                <button type="button" class="seq-step" data-step="4" aria-pressed="false">3</button>
+                <button type="button" class="seq-step" data-step="5" aria-pressed="false">e</button>
+                <button type="button" class="seq-step is-on" data-step="6" aria-pressed="true">4</button>
+                <button type="button" class="seq-step" data-step="7" aria-pressed="false">a</button>
+              </div>
+
+              <div class="sequencer-bottom">
+                <button id="btn-play-groove" type="button" class="audio-btn" aria-pressed="false">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <span id="audio-btn-label">Ouvir levada de Zabumba</span>
+                </button>
+                <span id="audio-hint" class="audio-hint">Simulação ao vivo com o naipe selecionado em destaque</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. METODOLOGIA & VIVÊNCIA DE BLOCO -->
+    <!-- 5. METODOLOGIA & VIVÊNCIA DE BLOCO -->
     <section id="metodologia" class="method-section section-pad" aria-labelledby="metodologia-heading">
       <div class="container">
         <div data-reveal>
@@ -261,7 +365,7 @@
         </div>
 
         <div class="method-grid">
-          <article class="method-pillar" data-reveal>
+          <article class="method-pillar" data-spotlight data-reveal>
             <span class="method-num">01 · DO ZERO AO CONJUNTO</span>
             <h3>Turmas separadas por momento</h3>
             <p>
@@ -269,7 +373,7 @@
             </p>
           </article>
 
-          <article class="method-pillar" data-reveal>
+          <article class="method-pillar" data-spotlight data-reveal>
             <span class="method-num">02 · ESTUDO EM CASA</span>
             <h3>Vídeos, áudios e grupo ativo</h3>
             <p>
@@ -277,7 +381,7 @@
             </p>
           </article>
 
-          <article class="method-pillar" data-reveal>
+          <article class="method-pillar" data-spotlight data-reveal>
             <span class="method-num">03 · PALCO E COMUNIDADE</span>
             <h3>Shows, festas e Crackmuela</h3>
             <p>
@@ -295,12 +399,12 @@
       </div>
     </section>
 
-    <!-- 5. COORDENAÇÃO & EQUIPE -->
+    <!-- 6. COORDENAÇÃO & EQUIPE -->
     <section id="equipe" class="team-section section-pad" aria-labelledby="equipe-heading">
       <div class="container">
         <div class="team-feature" data-reveal>
           <div class="team-portrait">
-            <img src="assets/images/musico_igor_conde.jpg" alt="Igor Conde, maestro e coordenador da Oficina de Percussão do Bloco do Caramuela" decoding="async">
+            <img src="assets/images/musico_igor_conde.jpg" alt="Igor Conde, maestro e coordenador da Oficina de Percussão do Bloco do Caramuela" width="400" height="400" decoding="async">
           </div>
           <div class="team-bio">
             <span class="kicker kicker--orange">Coordenação &amp; Regência</span>
@@ -324,7 +428,7 @@
       </div>
     </section>
 
-    <!-- 6. HORÁRIOS, LOCAL & INVESTIMENTO -->
+    <!-- 7. HORÁRIOS, LOCAL & INVESTIMENTO -->
     <section id="horarios-valores" class="logistics-section section-pad" aria-labelledby="logistica-heading">
       <div class="container">
         <div data-reveal>
@@ -336,7 +440,7 @@
         </div>
 
         <div class="logistics-grid">
-          <div class="info-panel" data-reveal>
+          <div class="info-panel" data-spotlight data-reveal>
             <h3>Turmas &amp; Local das Aulas</h3>
             <ul class="schedule-list">
               <li>
@@ -362,13 +466,13 @@
             </ul>
           </div>
 
-          <div class="info-panel info-panel--highlight" data-reveal>
+          <div class="info-panel info-panel--highlight" data-spotlight data-reveal>
             <h3>Investimento &amp; Condições</h3>
             <div class="pricing-tiers">
               <div class="price-row price-row--best">
                 <div>
                   <span class="price-name">Pacote Completo do Módulo (+20% OFF)</span>
-                  <span class="price-desc">Melhor custo-benefício • Parcelamento no Pix, boleto ou cartão</span>
+                  <span class="price-desc">Melhor custo-benefício · Parcelamento no Pix, boleto ou cartão</span>
                 </div>
                 <div class="price-amount">R$ 196<span>/mês*</span></div>
               </div>
@@ -393,7 +497,7 @@
       </div>
     </section>
 
-    <!-- 7. INSCRIÇÃO & CONTATO DIRETO -->
+    <!-- 8. INSCRIÇÃO & CENTRAL DE LINKS RÁPIDOS -->
     <section id="inscricao" class="enroll-section section-pad" aria-labelledby="inscricao-heading">
       <div class="container">
         <div class="enroll-card" data-reveal>
@@ -459,10 +563,32 @@
             </p>
           </form>
         </div>
+
+        <!-- Central de Links Rápidos (Link-na-Bio Integrado) -->
+        <div id="acesso-rapido" class="quick-links-bar" data-reveal>
+          <p class="quick-links-title">
+            Acesso rápido da Oficina
+            <span>Links úteis para salvar ou compartilhar</span>
+          </p>
+          <div class="quick-links-pills">
+            <a href="https://maps.google.com/?q=Fundi%C3%A7%C3%A3o+Progresso,+Rua+dos+Arcos,+24,+Lapa,+Rio+de+Janeiro" target="_blank" rel="noopener noreferrer" class="quick-pill">
+              Como chegar (Fundição Progresso) ↗
+            </a>
+            <a href="https://wa.me/5521975938088" target="_blank" rel="noopener noreferrer" class="quick-pill">
+              WhatsApp Produção ↗
+            </a>
+            <a href="https://www.instagram.com/caramuelaoficial" target="_blank" rel="noopener noreferrer" class="quick-pill">
+              Instagram @caramuelaoficial ↗
+            </a>
+            <a href="https://caramuela-site.vercel.app/" target="_blank" rel="noopener noreferrer" class="quick-pill">
+              Site Oficial Caramuela ↗
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 8. FAQ -->
+    <!-- 9. FAQ -->
     <section id="faq" class="faq-section section-pad" aria-labelledby="faq-heading">
       <div class="container">
         <div data-reveal>
@@ -547,12 +673,18 @@
     </section>
   </main>
 
+  <!-- Barra Flutuante Mobile -->
+  <div class="mobile-sticky-cta" aria-label="Ações rápidas no celular">
+    <a href="https://chat.whatsapp.com/BoaX3AkWFFlBwMNRSxHf6n" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">Aula Aberta</a>
+    <a href="#inscricao" class="btn btn--primary">Inscrever-se</a>
+  </div>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <img src="assets/images/logo_verde.png" alt="Caramuela">
+          <img src="assets/images/logo_verde.png" alt="Caramuela" width="950" height="792">
           <p>
             Oficina de Percussão do Bloco do Caramuela — Forró Pé-de-Serra, Carnaval Carioca e Cultura Popular na Lapa, Rio de Janeiro.
           </p>
@@ -562,9 +694,9 @@
           <div class="footer-col">
             <h4>Navegação</h4>
             <ul>
+              <li><a href="#para-quem">Para Quem É</a></li>
               <li><a href="#sobre">A Oficina</a></li>
               <li><a href="#instrumentos">Instrumentos</a></li>
-              <li><a href="#metodologia">Metodologia</a></li>
               <li><a href="#horarios-valores">Horários &amp; Valores</a></li>
               <li><a href="#inscricao">Inscrição</a></li>
             </ul>

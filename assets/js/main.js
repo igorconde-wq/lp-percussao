@@ -1,11 +1,15 @@
 /**
  * Oficina de Percussão — Bloco do Caramuela
- * Vanilla JS: Navigation, Interactive Instrument Explorer + Groove Synth,
- * WhatsApp Enrollment Builder, FAQ Accordion & Scroll Reveal.
+ * Vanilla JS: Hero Rhythm Wave Canvas, 21st.dev-style Spotlight Hover,
+ * Instrument Explorer + Interactive 8-Step Baião/Xote Sequencer,
+ * WhatsApp Builder, FAQ Accordion & Scroll Reveal.
  */
 
 (function () {
   'use strict';
+
+  const prefersReducedMotion =
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // 1. Sticky Header State
   const header = document.getElementById('site-header');
@@ -20,7 +24,80 @@
   window.addEventListener('scroll', updateHeader, { passive: true });
   updateHeader();
 
-  // 2. Mobile Drawer Navigation
+  // 2. Animated Subtle Acoustic Wave Canvas in Hero
+  const heroCanvas = document.getElementById('hero-canvas');
+  if (heroCanvas && !prefersReducedMotion) {
+    const ctx = heroCanvas.getContext('2d');
+    let animFrame = null;
+    let t = 0;
+
+    function resizeCanvas() {
+      const parent = heroCanvas.parentElement;
+      if (!parent) return;
+      heroCanvas.width = parent.clientWidth;
+      heroCanvas.height = parent.clientHeight;
+    }
+
+    function drawWave() {
+      const w = heroCanvas.width;
+      const h = heroCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const waves = [
+        { amp: 22, freq: 0.006, speed: 0.022, yBase: h * 0.72, color: 'rgba(255, 145, 56, 0.24)' },
+        { amp: 16, freq: 0.009, speed: 0.017, yBase: h * 0.78, color: 'rgba(133, 212, 38, 0.18)' },
+        { amp: 12, freq: 0.012, speed: 0.028, yBase: h * 0.84, color: 'rgba(255, 209, 102, 0.15)' }
+      ];
+
+      waves.forEach((wave) => {
+        ctx.beginPath();
+        for (let x = 0; x <= w; x += 12) {
+          const y = wave.yBase + Math.sin(x * wave.freq + t * wave.speed) * wave.amp;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = wave.color;
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+      });
+
+      t += 1;
+      animFrame = requestAnimationFrame(drawWave);
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas, { passive: true });
+    drawWave();
+
+    // Pause hero animation when scrolled past to preserve battery & 98%+ performance
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (window.scrollY > window.innerHeight * 1.1) {
+          if (animFrame) {
+            cancelAnimationFrame(animFrame);
+            animFrame = null;
+          }
+        } else if (!animFrame) {
+          drawWave();
+        }
+      },
+      { passive: true }
+    );
+  }
+
+  // 3. 21st.dev-style Cursor Spotlight Cards
+  if (!prefersReducedMotion) {
+    document.querySelectorAll('[data-spotlight]').forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+  }
+
+  // 4. Mobile Drawer Navigation
   const mobileToggle = document.getElementById('btn-mobile-menu');
   const mobileClose = document.getElementById('btn-mobile-close');
   const mobileDrawer = document.getElementById('mobile-drawer');
@@ -34,22 +111,16 @@
     document.body.style.overflow = isOpen ? 'hidden' : '';
   }
 
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => setDrawerOpen(true));
-  }
-  if (mobileClose) {
-    mobileClose.addEventListener('click', () => setDrawerOpen(false));
-  }
-  mobileLinks.forEach((link) => {
-    link.addEventListener('click', () => setDrawerOpen(false));
-  });
+  if (mobileToggle) mobileToggle.addEventListener('click', () => setDrawerOpen(true));
+  if (mobileClose) mobileClose.addEventListener('click', () => setDrawerOpen(false));
+  mobileLinks.forEach((link) => link.addEventListener('click', () => setDrawerOpen(false)));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('is-open')) {
       setDrawerOpen(false);
     }
   });
 
-  // 3. Interactive Instrument Explorer
+  // 5. Interactive Instrument Explorer + 8-Step Sequencer
   const INSTRUMENTS = {
     zabumba: {
       title: 'Zabumba',
@@ -60,7 +131,11 @@
       level: 'Iniciantes do zero e iniciados',
       technique: 'Maça + bacalhau alternados',
       teacher: 'Roberto Kauffman',
-      grooveLabel: 'Ouvir levada de Zabumba (Baião)'
+      grooveLabel: 'Ouvir levada de Zabumba',
+      patterns: {
+        baiao: [1, 0, 1, 1, 0, 0, 1, 0],
+        xote: [1, 0, 1, 0, 1, 0, 1, 0]
+      }
     },
     triangulo: {
       title: 'Triângulo',
@@ -71,7 +146,11 @@
       level: 'Iniciantes do zero e iniciados',
       technique: 'Pinça aberta/fechada + baqueta',
       teacher: 'Rogério Lorão',
-      grooveLabel: 'Ouvir levada de Triângulo (Baião)'
+      grooveLabel: 'Ouvir levada de Triângulo',
+      patterns: {
+        baiao: [1, 0, 1, 1, 1, 0, 1, 1],
+        xote: [1, 1, 1, 0, 1, 1, 1, 0]
+      }
     },
     caixa: {
       title: 'Caixa',
@@ -82,7 +161,11 @@
       level: 'Iniciantes do zero e iniciados',
       technique: 'Baquetas, rimshots e rufos',
       teacher: 'Felipe Cotta',
-      grooveLabel: 'Ouvir levada de Caixa (Baião)'
+      grooveLabel: 'Ouvir levada de Caixa',
+      patterns: {
+        baiao: [0, 0, 1, 0, 0, 1, 1, 0],
+        xote: [0, 0, 1, 0, 0, 0, 1, 1]
+      }
     },
     ganza: {
       title: 'Ganzá',
@@ -93,7 +176,11 @@
       level: 'Iniciantes do zero e iniciados',
       technique: 'Pulso contínuo e acentos',
       teacher: 'Paula Machado',
-      grooveLabel: 'Ouvir levada de Ganzá (Baião)'
+      grooveLabel: 'Ouvir levada de Ganzá',
+      patterns: {
+        baiao: [1, 1, 1, 1, 1, 1, 1, 1],
+        xote: [1, 0, 1, 1, 1, 0, 1, 1]
+      }
     },
     pandeiro: {
       title: 'Pandeiro',
@@ -104,11 +191,18 @@
       level: 'Iniciantes do zero e iniciados',
       technique: 'Polegar, ponta, palma e tapa',
       teacher: 'Rapha Morret',
-      grooveLabel: 'Ouvir levada de Pandeiro (Baião)'
+      grooveLabel: 'Ouvir levada de Pandeiro',
+      patterns: {
+        baiao: [1, 1, 1, 1, 0, 1, 1, 0],
+        xote: [1, 0, 1, 1, 1, 0, 1, 0]
+      }
     }
   };
 
   let currentInstrument = 'zabumba';
+  let currentRhythm = 'baiao';
+  let activePattern = [...INSTRUMENTS.zabumba.patterns.baiao];
+
   const tabs = document.querySelectorAll('.instrument-tab');
   const instTitle = document.getElementById('inst-title');
   const instRole = document.getElementById('inst-role');
@@ -121,6 +215,24 @@
   const audioBtn = document.getElementById('btn-play-groove');
   const audioBtnLabel = document.getElementById('audio-btn-label');
   const selectInstrumentoForm = document.getElementById('select-instrumento');
+  const seqButtons = document.querySelectorAll('.seq-step');
+  const rhythmButtons = document.querySelectorAll('.rhythm-btn');
+
+  function renderSequencerGrid(currentStepIdx = -1) {
+    seqButtons.forEach((btn, idx) => {
+      const isOn = Boolean(activePattern[idx]);
+      btn.classList.toggle('is-on', isOn);
+      btn.classList.toggle('is-current', idx === currentStepIdx);
+      btn.setAttribute('aria-pressed', String(isOn));
+    });
+  }
+
+  function loadPatternFromInstrument() {
+    const data = INSTRUMENTS[currentInstrument];
+    if (!data) return;
+    activePattern = [...data.patterns[currentRhythm]];
+    renderSequencerGrid();
+  }
 
   function selectInstrument(key) {
     const data = INSTRUMENTS[key];
@@ -145,15 +257,28 @@
       audioBtnLabel.textContent = data.grooveLabel;
     }
 
-    // Sync form default smoothly if user hasn't picked another value manually
+    loadPatternFromInstrument();
+
     if (selectInstrumentoForm && !selectInstrumentoForm.dataset.userTouched) {
       selectInstrumentoForm.value = data.title;
     }
   }
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      selectInstrument(tab.dataset.instrument);
+  tabs.forEach((tab) => tab.addEventListener('click', () => selectInstrument(tab.dataset.instrument)));
+
+  rhythmButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentRhythm = btn.dataset.rhythm;
+      rhythmButtons.forEach((b) => b.classList.toggle('is-active', b === btn));
+      loadPatternFromInstrument();
+    });
+  });
+
+  seqButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.step);
+      activePattern[idx] = activePattern[idx] ? 0 : 1;
+      renderSequencerGrid();
     });
   });
 
@@ -163,7 +288,7 @@
     });
   }
 
-  // 4. Web Audio API Synthetic Baião Groove Preview (zero external audio files needed)
+  // 6. Web Audio API Synthetic Baião / Xote Groove Preview
   let audioCtx = null;
   let grooveTimer = null;
   let isPlayingGroove = false;
@@ -218,7 +343,7 @@
 
   function triggerTriangle(ctx, time, open, gainVal) {
     const freqs = [2450, 3680, 4920];
-    const dur = open ? 0.24 : 0.055;
+    const dur = open ? 0.22 : 0.055;
     freqs.forEach((f, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
@@ -246,7 +371,7 @@
     filter.type = 'highpass';
     filter.frequency.value = 4800;
     const gain = ctx.createGain();
-    const peak = accent ? gainVal * 1.45 : gainVal * 0.75;
+    const peak = accent ? gainVal * 1.4 : gainVal * 0.75;
     gain.gain.setValueAtTime(peak, time);
     gain.gain.exponentialRampToValueAtTime(0.001, time + 0.065);
     noise.connect(filter);
@@ -255,42 +380,35 @@
     noise.start(time);
   }
 
-  // 8-step 16th-note Baião cell (2 beats of 2/4)
-  function playBaiaoStep(step) {
+  function playGrooveStep(step) {
+    renderSequencerGrid(step);
     const ctx = ensureAudioContext();
     if (!ctx) return;
     const now = ctx.currentTime + 0.01;
     const focus = currentInstrument;
+    const hit = Boolean(activePattern[step]);
 
-    // Subtle ensemble backing + highlighted selected instrument
-    const zGain = focus === 'zabumba' ? 0.62 : 0.22;
-    const tGain = focus === 'triangulo' ? 0.34 : 0.11;
-    const cGain = focus === 'caixa' ? 0.38 : 0.1;
-    const gGain = focus === 'ganza' ? 0.26 : 0.07;
-
-    // Zabumba Baião: Bass on 0, 3; Bacalhau on 2, 6
-    if (step === 0 || step === 3) {
-      triggerZabumbaBass(ctx, now, focus === 'pandeiro' ? 0.36 : zGain);
-    }
-    if (step === 2 || step === 6) {
-      triggerBacalhau(ctx, now, zGain * 0.65);
+    // Subtle ensemble backing pulse
+    if (step === 0 || step === 4) {
+      triggerZabumbaBass(ctx, now, 0.16);
     }
 
-    // Triângulo Baião: closed/open pattern
-    if (step === 0 || step === 2 || step === 4 || step === 6) {
-      const isOpen = step === 2 || step === 6;
-      triggerTriangle(ctx, now, isOpen, tGain);
-    } else if (step === 3 || step === 7) {
-      triggerTriangle(ctx, now, false, tGain * 0.55);
-    }
+    if (!hit) return;
 
-    // Caixa / Pandeiro syncopation
-    if (step === 2 || step === 5 || step === 6) {
-      triggerBacalhau(ctx, now, focus === 'pandeiro' ? 0.32 : cGain);
+    if (focus === 'zabumba') {
+      if (step === 2 || step === 6) triggerBacalhau(ctx, now, 0.45);
+      else triggerZabumbaBass(ctx, now, 0.65);
+    } else if (focus === 'triangulo') {
+      triggerTriangle(ctx, now, step === 2 || step === 6, 0.34);
+    } else if (focus === 'caixa') {
+      triggerBacalhau(ctx, now, step === 2 || step === 6 ? 0.55 : 0.3);
+    } else if (focus === 'ganza') {
+      triggerShaker(ctx, now, step === 2 || step === 6, 0.28);
+    } else if (focus === 'pandeiro') {
+      if (step === 0 || step === 4) triggerZabumbaBass(ctx, now, 0.44);
+      else triggerBacalhau(ctx, now, 0.35);
+      triggerShaker(ctx, now, false, 0.12);
     }
-
-    // Ganzá steady 16ths with accent on 2 & 6
-    triggerShaker(ctx, now, step === 2 || step === 6, gGain);
   }
 
   function stopGroove() {
@@ -299,6 +417,7 @@
       clearInterval(grooveTimer);
       grooveTimer = null;
     }
+    renderSequencerGrid(-1);
     if (audioBtn) {
       audioBtn.classList.remove('is-playing');
       audioBtn.setAttribute('aria-pressed', 'false');
@@ -320,25 +439,22 @@
     if (audioBtnLabel) {
       audioBtnLabel.textContent = 'Pausar levada';
     }
-    // ~104 BPM 16th note = ~144ms
-    playBaiaoStep(stepIndex);
+    const intervalMs = currentRhythm === 'xote' ? 175 : 144;
+    playGrooveStep(stepIndex);
     grooveTimer = setInterval(() => {
       stepIndex = (stepIndex + 1) % 8;
-      playBaiaoStep(stepIndex);
-    }, 144);
+      playGrooveStep(stepIndex);
+    }, intervalMs);
   }
 
   if (audioBtn) {
     audioBtn.addEventListener('click', () => {
-      if (isPlayingGroove) {
-        stopGroove();
-      } else {
-        startGroove();
-      }
+      if (isPlayingGroove) stopGroove();
+      else startGroove();
     });
   }
 
-  // 5. WhatsApp Pre-Registration Builder
+  // 7. WhatsApp Pre-Registration Builder
   const enrollForm = document.getElementById('enroll-form');
   if (enrollForm) {
     enrollForm.addEventListener('submit', (e) => {
@@ -363,7 +479,7 @@
     });
   }
 
-  // 6. Accessible FAQ Accordion
+  // 8. Accessible FAQ Accordion
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach((item) => {
     const trigger = item.querySelector('.faq-trigger');
@@ -389,7 +505,7 @@
     });
   });
 
-  // 7. Scroll Reveal via IntersectionObserver + viewport sweep on jump
+  // 9. Scroll Reveal via IntersectionObserver + viewport sweep
   const revealEls = document.querySelectorAll('[data-reveal]');
   function sweepVisibleAboveFold() {
     const cutoff = window.innerHeight * 0.96;
