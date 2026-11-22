@@ -1614,6 +1614,48 @@ button {
   color: rgba(233, 223, 208, 0.72);
 }
 
+/* ==========================================================================
+   Botão "Quero Participar" entre seções
+   ========================================================================== */
+.section-cta-bar {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(29, 21, 16, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.section-cta-bar--dark {
+  border-top-color: rgba(250, 246, 238, 0.14);
+}
+
+.section-cta-copy {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--clr-ink-900);
+}
+
+.section-cta-copy span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--clr-ink-500);
+}
+
+.section-cta-bar--dark .section-cta-copy {
+  color: #FFFFFF;
+}
+
+.section-cta-bar--dark .section-cta-copy span {
+  color: var(--clr-light-200);
+}
+
 .mobile-sticky-cta {
   display: none;
 }
@@ -1650,7 +1692,7 @@ button {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   Responsive Breakpoints & Mobile Optimization
    ========================================================================== */
 @media (max-width: 1024px) {
   .desktop-nav,
@@ -1664,12 +1706,15 @@ button {
 
   .objections-grid,
   .story-grid,
-  .gallery-strip,
   .instruments-layout,
   .logistics-grid,
   .enroll-card,
   .method-grid {
     grid-template-columns: 1fr;
+  }
+
+  .story-grid {
+    gap: 32px;
   }
 
   .team-feature {
@@ -1678,42 +1723,237 @@ button {
   }
 
   .team-portrait {
-    max-width: 260px;
+    max-width: 220px;
   }
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 18px;
+  }
+
   .section-pad {
-    padding: 64px 0;
+    padding: 54px 0;
+  }
+
+  .site-header {
+    padding: 12px 0;
+  }
+
+  .site-header.is-scrolled {
+    padding: 9px 0;
+  }
+
+  .brand-logo {
+    height: 36px;
+  }
+
+  .brand-divider {
+    height: 20px;
+  }
+
+  .brand-sub {
+    font-size: 0.84rem;
+  }
+
+  .brand-sub span {
+    font-size: 0.64rem;
   }
 
   .hero {
-    min-height: 92vh;
-    padding: 108px 0 36px;
+    min-height: auto;
+    padding: 94px 0 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.82rem, 7.1vw, 2.45rem);
+    margin-bottom: 14px;
+  }
+
+  .hero-lead {
+    font-size: 0.96rem;
+    line-height: 1.55;
+    margin-bottom: 22px;
+  }
+
+  .hero-cta-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+
+  .hero-cta-group .btn--primary {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 14px 20px;
+  }
+
+  .hero-cta-group .btn--whatsapp,
+  .hero-cta-group .btn--ghost-light {
+    width: 100%;
+    padding: 12px 12px;
+    font-size: 0.84rem;
   }
 
   .hero-proof-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 12px;
+    padding-top: 20px;
+  }
+
+  .proof-item dd {
+    font-size: 0.96rem;
+  }
+
+  .proof-item span {
+    font-size: 0.78rem;
   }
 
   .header-actions .btn {
     display: none;
   }
 
+  .section-title {
+    font-size: clamp(1.65rem, 6.2vw, 2.2rem);
+    margin-bottom: 14px;
+  }
+
+  .section-lead {
+    font-size: 0.96rem;
+  }
+
+  .objection-card,
+  .method-pillar,
+  .info-panel {
+    padding: 22px 20px;
+  }
+
+  /* Galeria swipeable horizontal no celular */
+  .gallery-strip {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    margin-top: 34px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .gallery-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-tile {
+    flex: 0 0 82%;
+    scroll-snap-align: start;
+  }
+
+  .instruments-photo-card img {
+    min-height: 240px;
+    max-height: 300px;
+  }
+
+  .instrument-explorer {
+    padding: 20px 16px;
+  }
+
+  .instrument-tabs {
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  .instrument-tab {
+    padding: 9px 14px;
+    font-size: 0.86rem;
+    min-height: 40px;
+  }
+
+  .instrument-specs {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .groove-sequencer {
+    padding: 16px 14px;
+  }
+
+  .sequencer-steps {
+    gap: 5px;
+  }
+
+  .seq-step {
+    height: 44px;
+    font-size: 0.78rem;
+  }
+
+  .team-feature {
+    padding: 24px 20px;
+    gap: 24px;
+  }
+
+  .team-portrait {
+    max-width: 170px;
+  }
+
+  .price-amount {
+    font-size: 1.55rem;
+  }
+
   .enroll-card {
-    padding: 28px 22px;
+    padding: 24px 18px;
+    gap: 28px;
   }
 
   .enroll-form {
     grid-template-columns: 1fr;
   }
 
-  .instrument-specs {
-    grid-template-columns: 1fr;
+  /* Evita auto-zoom em inputs no iOS Safari */
+  .form-field input,
+  .form-field select {
+    font-size: 16px;
+    padding: 13px 14px;
   }
 
-  .sequencer-steps {
-    gap: 4px;
+  .quick-links-bar {
+    padding: 20px 18px;
+  }
+
+  .quick-links-pills {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .quick-pill {
+    justify-content: space-between;
+    min-height: 44px;
+    width: 100%;
+  }
+
+  .faq-trigger {
+    padding: 16px 18px;
+    font-size: 0.98rem;
+  }
+
+  .faq-answer-inner {
+    padding: 0 18px 18px;
+    font-size: 0.92rem;
+  }
+
+  .section-cta-bar {
+    margin-top: 34px;
+    padding-top: 22px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .section-cta-bar .btn {
+    width: 100%;
   }
 
   .mobile-sticky-cta {
@@ -1723,20 +1963,35 @@ button {
     left: 0;
     right: 0;
     z-index: 990;
-    background: rgba(26, 0, 44, 0.94);
+    background: rgba(26, 0, 44, 0.96);
     backdrop-filter: blur(12px);
-    padding: 10px 16px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
     gap: 10px;
     border-top: 1px solid rgba(250, 246, 238, 0.14);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .mobile-sticky-cta.is-hidden {
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
   }
 
   .mobile-sticky-cta .btn {
     flex: 1;
     padding: 12px 14px;
     font-size: 0.86rem;
+    min-height: 44px;
   }
 
   .site-footer {
     padding-bottom: 88px;
   }
 }
+
+@media (max-width: 390px) {
+  .brand-sub span {
+    display: none;
+  }
+}
+
