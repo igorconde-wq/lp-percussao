@@ -11,6 +11,28 @@
   const prefersReducedMotion =
     window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // 0. Contagem real de segundas-feiras de aula até o desfile de Carnaval 2027 (05/02/2027)
+  (function updateCarnavalUrgency() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const paradeDate = new Date(2027, 1, 5); // 05 de fevereiro de 2027
+    if (today <= paradeDate) {
+      let mondays = 0;
+      const cursor = new Date(today);
+      while (cursor <= paradeDate) {
+        if (cursor.getDay() === 1) {
+          // Exclui o recesso de fim de ano em 28/12/2026
+          const isBreak = cursor.getFullYear() === 2026 && cursor.getMonth() === 11 && cursor.getDate() === 28;
+          if (!isBreak) mondays += 1;
+        }
+        cursor.setDate(cursor.getDate() + 1);
+      }
+      document.querySelectorAll('[data-mondays-left]').forEach((el) => {
+        el.textContent = String(Math.max(1, mondays));
+      });
+    }
+  })();
+
   // 1. Sticky Header State
   const header = document.getElementById('site-header');
   function updateHeader() {
