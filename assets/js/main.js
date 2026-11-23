@@ -97,30 +97,7 @@
     });
   }
 
-  // 4. Mobile Drawer Navigation
-  const mobileToggle = document.getElementById('btn-mobile-menu');
-  const mobileClose = document.getElementById('btn-mobile-close');
-  const mobileDrawer = document.getElementById('mobile-drawer');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-
-  function setDrawerOpen(isOpen) {
-    if (!mobileDrawer || !mobileToggle) return;
-    mobileDrawer.classList.toggle('is-open', isOpen);
-    mobileDrawer.setAttribute('aria-hidden', String(!isOpen));
-    mobileToggle.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  }
-
-  if (mobileToggle) mobileToggle.addEventListener('click', () => setDrawerOpen(true));
-  if (mobileClose) mobileClose.addEventListener('click', () => setDrawerOpen(false));
-  mobileLinks.forEach((link) => link.addEventListener('click', () => setDrawerOpen(false)));
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('is-open')) {
-      setDrawerOpen(false);
-    }
-  });
-
-  // 5. Interactive Instrument Explorer + 8-Step Sequencer
+  // 4. Interactive Instrument Explorer + 8-Step Sequencer
   const INSTRUMENTS = {
     zabumba: {
       title: 'Zabumba',
