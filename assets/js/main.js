@@ -510,21 +510,6 @@
     window.addEventListener('scroll', sweepVisibleAboveFold, { passive: true });
     window.addEventListener('hashchange', sweepVisibleAboveFold);
     sweepVisibleAboveFold();
-
-    // 10. Hide mobile sticky CTA while #inscricao is visible so it doesn't cover the form
-    const stickyBar = document.getElementById('mobile-sticky-cta');
-    const enrollSection = document.getElementById('inscricao');
-    if (stickyBar && enrollSection) {
-      const stickyObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            stickyBar.classList.toggle('is-hidden', entry.isIntersecting);
-          });
-        },
-        { threshold: 0.15 }
-      );
-      stickyObserver.observe(enrollSection);
-    }
   } else {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }

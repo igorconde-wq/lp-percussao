@@ -262,20 +262,12 @@ button {
    Header & Mobile Navigation
    ========================================================================== */
 .site-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 16px 0;
-  transition: background-color var(--transition-snappy), backdrop-filter var(--transition-snappy), padding var(--transition-snappy), box-shadow var(--transition-snappy);
-}
-
-.site-header.is-scrolled {
-  background-color: rgba(26, 0, 44, 0.92);
-  backdrop-filter: blur(14px);
-  padding: 11px 0;
-  box-shadow: 0 8px 28px rgba(17, 0, 26, 0.28);
+  padding: 20px 0;
 }
 
 .header-inner {
@@ -2102,38 +2094,6 @@ button {
 
   .section-cta-bar .btn {
     width: 100%;
-  }
-
-  .mobile-sticky-cta {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 990;
-    background: rgba(26, 0, 44, 0.96);
-    backdrop-filter: blur(12px);
-    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-    gap: 10px;
-    border-top: 1px solid rgba(250, 246, 238, 0.14);
-    transition: transform 0.25s ease, opacity 0.25s ease;
-  }
-
-  .mobile-sticky-cta.is-hidden {
-    transform: translateY(110%);
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .mobile-sticky-cta .btn {
-    flex: 1;
-    padding: 12px 14px;
-    font-size: 0.86rem;
-    min-height: 44px;
-  }
-
-  .site-footer {
-    padding-bottom: 88px;
   }
 }
 
